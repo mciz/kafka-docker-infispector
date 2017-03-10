@@ -9,11 +9,11 @@ EXPOSE 2181 2888 3888 8084
 USER jboss
 WORKDIR /opt/jboss
 
-RUN 	curl http://mirror.nexcess.net/apache/kafka/"$KAFKA_VERSION"/"$KAFKA_HOME".tgz /
+RUN 	curl http://mirror.nexcess.net/apache/kafka/"$KAFKA_VERSION"/"$KAFKA_HOME".tgz \
 	| tar -xzf - -C /opt/jboss \
 	&& mv "$KAFKA_OPT" /opt/jboss/kafka 
 
-CMD ["opt/jboss/kafka/bin/kafka-server-start.sh", "opt/jboss/kafka/config/server.properties"]
+CMD ["/opt/jboss/kafka/bin/kafka-server-start.sh", "/opt/jboss/kafka/config/server.properties"]
 
 
 
